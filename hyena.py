@@ -22,18 +22,18 @@ def home():
 def hokuto():
     st.header("スマスロ北斗の拳")
     st.write("直近1600G差枚別狙い目")
-    hokuto1600 = pd.read_csv('.hokuto_data/hokuto1600.csv')
+    hokuto1600 = pd.read_csv('./hokuto_data/hokuto1600.csv')
     st.write(hokuto1600)
     st.write(" ")
     st.write("前回一撃でたくさん出た台は1600G差枚がマイナスでも辛い。以下が目安")
-    hokuto_ichigekigo = pd.read_csv('.hokuto_data/hokuto_ichigekigo.csv')
+    hokuto_ichigekigo = pd.read_csv('./hokuto_data/hokuto_ichigekigo.csv')
     st.dataframe(hokuto_ichigekigo)
     st.write(" ")
     st.write("朝一狙い目")
     st.write("80G～")
     st.write("")
     st.write("朝二は甘め")
-    hokuto_asa2 = pd.read_csv(".hokuto_data/hokuto_asa2.csv")
+    hokuto_asa2 = pd.read_csv("./hokuto_data/hokuto_asa2.csv")
     st.dataframe(hokuto_asa2)
     st.write(" ")
     st.markdown("""
@@ -50,10 +50,10 @@ def okidoki_gold():
 
     select = st.radio("状況を選択", options=("朝一以外","朝一","マタギ狙い"), index=0, horizontal=True)
     if select == "朝一以外":
-        normal = pd.read_csv('.okigold_data/okigold_normal.csv')
+        normal = pd.read_csv('./okigold_data/okigold_normal.csv')
         st.write(normal)
     elif select == "朝一":
-        st.dataframe(pd.read_csv('.okigold_data/okigold_morning.csv'))
+        st.dataframe(pd.read_csv('./okigold_data/okigold_morning.csv'))
     elif select == "マタギ狙い":
         matagi = st.text_input("33G以上は0, 32以下は1で入力。", "0100")
         mtype = st.radio("「1」のゲーム数",("1～11G","12G～32G"), horizontal=True, args=[1,0] )
@@ -61,7 +61,7 @@ def okidoki_gold():
             mtype = '1'
         else:
             mtype = '0'
-        st.dataframe(pd.read_csv(f'.okigold_data/okigold_matagi{mtype}_{matagi}.csv'))
+        st.dataframe(pd.read_csv(f'./okigold_data/okigold_matagi{mtype}_{matagi}.csv'))
 
         st.markdown(""" ## マタギ狙いの注意点
         ＊有利頭から現在の状態まで数えて、有利切れたらヤメ。 \n
@@ -70,7 +70,8 @@ def okidoki_gold():
         """)
 
 def tenzen():
-    st.write("工事中...")
+    st.header("バジリスク絆2 天膳BLACK")
+
 
 
 if st.session_state['machine'] == 'L北斗の拳':
