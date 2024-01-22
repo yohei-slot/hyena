@@ -14,7 +14,7 @@ st.session_state['machine'] = machine
 def home():
     st.markdown("""
     ## 注意事項
-    ＊このサイトの狙い目は全て20円等価交換105%ボーダーです。　\n
+    ＊このサイトの狙い目は全て20円等価交換105%ボーダーです。 \n
     ＊閉店減算は考慮されていません。 \n
     ＊作者が収集したデータを基に、独自に算出した狙い目です。参考にする際は自己責任で。
     """)
@@ -50,7 +50,7 @@ def hokuto():
     st.write("\n")
 
     st.markdown("""
-    注意事項　\n
+    注意事項 \n
     ＊狙い目は内部状態不問で立てています。落ちている台は地獄の可能性が高くなるので、表記されたG数より少し深めから打ちましょう。 \n
     ＊逆に、通常以上の可能性が上がる台（マミヤ同行・ジャギステ・北斗カウンター点灯など）は少し浅めに狙えます。 \n
     ＊スイカを溢さないように！溢す人は深めから狙いましょう。
@@ -198,12 +198,24 @@ def tenzen():
              当日すでに宿怨チャレンジに突入済みの台は辛くなる可能性が高いのでご注意ください。\n
              ＊宿怨無し差枚とは、宿怨チャレンジがその日一度も発生していない場合の朝からの差枚（前回BC or BT 終わり時点）です。
              """)
+
+    morning = st.radio("リセ状態", options=("朝一以外", "朝一"), index=0, horizontal=True)
     thru = st.radio("BCスルー回数", options=(0,1,2,3,4), index=0, horizontal=True)
-    if thru == 4:
-        st.subheader("BT当選まで全ツ！")
-    
-    elif thru == 0:
-        diff = st.slider("宿怨無し差枚", -2000,1000,0,1)
+    if morning == "朝一"
+        if thru == 4:
+            st.subheader("BT当選まで全ツ!")
+        
+        elif thru == 0:
+            diff = st.slider("宿怨無し差枚", 0,1000,0,1)
+            if diff >= 100:
+                if diff >=625:
+                    g = -1.36*diff + 1020
+                else:
+                    g = -0.15*diff + 262.3
+            else:
+                g = 250
+            st.subheader(f"狙い目は: {g}G")
+
 
 
 
