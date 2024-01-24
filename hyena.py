@@ -299,7 +299,6 @@ def tenzen():
                 st.subheader(f"狙い目は: {int(g)}G")
 
     elif morning == "朝一":
-        thru = st.radio("BCスルー回数", options=(0,1,2,3,4), index=0, horizontal=True)
         if thru == 0:
             st.subheader("狙い目は: 260G")
 
