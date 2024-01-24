@@ -322,6 +322,8 @@ def tenzen():
             
             st.subheader(f"狙い目は: {int(g)}G")
 
+    st.divider()
+
     st.markdown("""
                 ## 穢れ狙いについて
                 天膳BC終了時の穢れ示唆によって打ち分けができます。  \n
