@@ -201,17 +201,12 @@ def tenzen():
 
     morning = st.radio("リセ状態", options=("朝一以外", "朝一"), index=0, horizontal=True)
     thru = st.radio("BCスルー回数", options=(0,1,2,3,4), index=0, horizontal=True)
-<<<<<<< HEAD
     shukuen = st.radio("当該有利区間にて、穢れ契機による宿怨チャレンジ履歴が", options=("あり","なし" ))
     if morning == "朝一以外":
-=======
-    if morning == "朝一"
->>>>>>> 3bb501f56bf34b7c907b32f679e9a42e52a791c9
         if thru == 4:
             st.subheader("BT当選まで全ツ!")
         
         elif thru == 0:
-<<<<<<< HEAD
             if shukuen == "あり":
                 diff = st.slider("有利差枚(前回BC終了時時点)", -1500,1000,0,1)
                 g  = 237.437621 - 0.0188185767*diff - 1.03004925**(diff/4.14118384)
@@ -337,17 +332,6 @@ def tenzen():
                 解放まで時間がかかる場合もありますので、閉店まで4時間以上は確保して狙いましょう。
                 """)
 
-=======
-            diff = st.slider("宿怨無し差枚", 0,1000,0,1)
-            if diff >= 100:
-                if diff >=625:
-                    g = -1.36*diff + 1020
-                else:
-                    g = -0.15*diff + 262.3
-            else:
-                g = 250
-            st.subheader(f"狙い目は: {g}G")
->>>>>>> 3bb501f56bf34b7c907b32f679e9a42e52a791c9
 
 
 
