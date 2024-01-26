@@ -2,11 +2,12 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from enum import Enum
+import yoshimune_rising
 
 st.title("ハイエナボーダーメモ")
 machine = st.selectbox(
     '機種を選択',
-    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗ライジング', 'ヴァルヴレイヴ', 'からくりサーカス', '甲鉄城のカバネリ', '戦国乙女4', 'L大工の源さん', 'モンキーターンV')
+    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'からくりサーカス', '甲鉄城のカバネリ', '戦国乙女4', 'L大工の源さん', 'モンキーターンV')
 )
 
 st.session_state['machine'] = machine
@@ -299,7 +300,6 @@ def tenzen():
                 st.subheader(f"狙い目は: {int(g)}G")
 
     elif morning == "朝一":
-        thru = st.radio("BCスルー回数", options=(0,1,2,3,4), index=0, horizontal=True)
         if thru == 0:
             st.subheader("狙い目は: 260G")
 
@@ -323,6 +323,8 @@ def tenzen():
             
             st.subheader(f"狙い目は: {int(g)}G")
 
+    st.divider()
+
     st.markdown("""
                 ## 穢れ狙いについて
                 天膳BC終了時の穢れ示唆によって打ち分けができます。  \n
@@ -332,19 +334,16 @@ def tenzen():
                 解放まで時間がかかる場合もありますので、閉店まで4時間以上は確保して狙いましょう。
                 """)
 
-
-
-
-
-
-if st.session_state['machine'] == 'L北斗の拳':
-    hokuto()
-elif st.session_state['machine'] == '機種を選択':
+if st.session_state['machine'] == '機種を選択':
     home()
+elif st.session_state['machine'] == 'L北斗の拳':
+    hokuto()
 elif st.session_state['machine'] == '沖ドキGOLD':
     okidoki_gold()
 elif st.session_state['machine'] == '絆2天膳':
     tenzen()
+elif st.session_state['machine'] == '吉宗RISING':
+    yoshimune_rising.yoshimune_r()
 else:
     st.header("工事中...")
 
