@@ -526,7 +526,7 @@ def niku():
         st.subheader(f"狙い目は 液晶{nikudict[thru]}万pts～")
     elif morning:
         st.write("荒野後3回目の当たりまでに75%でSPが来ます。2スルーは状態不問では0G～と甘くなっていますが、前任者が1,2スルー中にSP発動を確認してやめた場合期待値が大きく下がります。")
-        thru = st.slider("朝一からの初当たり回数",0,9,0,1)
+        thru = st.slider("魔界の荒野後初当たり回数",0,9,0,1)
         nikudict = {0:130,1:80,2:0,3:300,4:250,5:250,6:250,7:250,8:250,9:260}
         st.subheader(f"狙い目は 液晶{nikudict[thru]}万pts～")
 
