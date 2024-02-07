@@ -7,7 +7,7 @@ import yoshimune_rising
 st.title("ハイエナボーダーメモ")
 machine = st.selectbox(
     '機種を選択',
-    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'Lキン肉マン', "モンキーターンV")
+    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'Lキン肉マン', "モンキーターンV", "バイオヴィレッジ")
 )
 
 st.session_state['machine'] = machine
@@ -568,6 +568,26 @@ def monkeyv():
         else:
             st.subheader("データカウンター 410G～を基準に優出ptsや示唆で押し引き")
 
+def village():
+    st.header("スマスロ バイオハザード:ヴィレッジ")
+    morning = st.radio("朝一リセット", value=False, help="設定変更後は天井550Gに短縮")
+    if morning:
+        st.subheader("天井狙い 70G～")
+    else:
+        st.subheader("天井狙い 390G～")
+        st.subheader("ゾーン狙い 85G～150G（前兆まで）")
+
+    st.divider()
+
+    st.markdown("""## メニュー画面 \n
+                175G以降、メニュー画面にクリスがいればボーダーを下げれる。\n赤背景であれば問答無用で打つ。
+                """)
+    
+    st.markdown("""## 辞め時 \n
+                CLIMAX7敗北時は即ヤメ \n
+                Hazard Rush 終了後は5G程回し即前兆を確認してヤメ
+                """)
+
 
 if st.session_state['machine'] == '機種を選択':
     home()
@@ -585,6 +605,8 @@ elif st.session_state['machine'] == 'Lキン肉マン':
     niku()
 elif st.session_state['machine'] == 'モンキーターンV':
     monkeyv()
+elif st.session_state['machine'] == "バイオヴィレッジ":
+    village()
 else:
     st.header("工事中...")
 
