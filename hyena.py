@@ -7,7 +7,7 @@ import yoshimune_rising
 st.title("ハイエナボーダーメモ")
 machine = st.selectbox(
     '機種を選択',
-    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'からくりサーカス', 'Lキン肉マン','甲鉄城のカバネリ', '戦国乙女4', 'L大工の源さん', 'モンキーターンV')
+    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'Lキン肉マン', "モンキーターンV")
 )
 
 st.session_state['machine'] = machine
@@ -549,6 +549,24 @@ def niku():
                 打てるもの（1回当たるまで）：　\nアイキャッチ赤orモノクロ\nセリフ赤or紫
                 """)
 
+def monkeyv():
+    st.header("スマスロ　モンキーターンV")
+    morning = st.checkbox("朝一リセット", value=False)
+    reduce = st.checkbox("天井短縮", value=False, help="波多野vs青島敗北後と上位AT後は天井短縮")
+    if morning:
+        shuki = st.radio("何周期目？", options=("1", "2", "3以上"))
+        if shuki == "1":
+            st.subheader("データカウンター 40G~優出まで、スルー時は2周期目のボーダーで押し引き")
+        elif shuki == "2":
+            st.subheader("データカウンター 150G～天井まで")
+        else:
+            st.subheader("ツッパ")
+    
+    else:
+        if reduce:
+            st.subheader("データカウンター 150G～天井まで")
+        else:
+            st.subheader("データカウンター 410G～を基準に優出ptsや示唆で押し引き")
 
 
 if st.session_state['machine'] == '機種を選択':
@@ -565,6 +583,8 @@ elif st.session_state['machine'] == 'ヴァルヴレイヴ':
     vvv()
 elif st.session_state['machine'] == 'Lキン肉マン':
     niku()
+elif st.session_state['machine'] == 'モンキーターンV':
+    monkeyv()
 else:
     st.header("工事中...")
 
