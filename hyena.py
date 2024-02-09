@@ -7,7 +7,7 @@ import yoshimune_rising
 st.title("ハイエナボーダーメモ")
 machine = st.selectbox(
     '機種を選択',
-    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'Lキン肉マン', "モンキーターンV", "バイオヴィレッジ")
+    ('機種を選択','L北斗の拳', '沖ドキGOLD', '絆2天膳', '吉宗RISING', 'ヴァルヴレイヴ', 'Lキン肉マン', "モンキーターンV", "バイオヴィレッジ", "マクロスF4", "Lコードギアス")
 )
 
 st.session_state['machine'] = machine
@@ -56,6 +56,9 @@ def hokuto():
     ＊逆に、通常以上の可能性が上がる台（マミヤ同行・ジャギステ・北斗カウンター点灯など）は少し浅めに狙えます。 \n
     ＊スイカを溢さないように！溢す人は深めから狙いましょう。
     """)
+
+    st.divider()
+    st.caption("L北斗の拳、AT、純増4枚/G、天井1268G+α、リセット天井800G+α")
 
 def okidoki_gold():
     st.header("沖ドキGOLD")
@@ -191,6 +194,9 @@ def okidoki_gold():
         ＊「1」スタートで数えるのは危険
         ＊ダブルマタギは危険なので触らない。例：001010
         """)
+
+        st.divider()
+        st.caption("S沖ドキGOLD-30、6.5号機、AT、純増3枚/G、天井999G+α")
 
 def tenzen():
     st.header("バジリスク絆2 天膳BLACK")
@@ -333,6 +339,9 @@ def tenzen():
                 ＊下パネル横まで・下パネル消灯：穢れ開放まで続行  \n
                 解放まで時間がかかる場合もありますので、閉店まで4時間以上は確保して狙いましょう。
                 """)
+    
+    st.divider()
+    st.caption("Lバジリスク甲賀忍法帖 絆2 天膳BLACK EDITION、AT、純増2.9枚/G、BC天井333G+α、BT天井 BC8回")
 
 def vvv():
     st.header("L 革命機ヴァルヴレイヴ")
@@ -516,6 +525,9 @@ def vvv():
                 4. AT後の引き戻しが少ない
                 5. RBよりBBに偏る（BB8 : RB2）
                 """)
+    
+    st.divider()
+    st.caption("L革命期ヴァルヴレイヴ、AT、純増7.2枚/G、CZ天井液晶1000G+α、ボナ天井実1500G+α、CZスルー天井 8回目、RBスルー天井 5回目")
 
 def niku():
     st.header("スマスロ キン肉マン 7人の悪魔超人編")
@@ -548,6 +560,9 @@ def niku():
                 ## その他
                 打てるもの（1回当たるまで）：　\nアイキャッチ赤orモノクロ\nセリフ赤or紫
                 """)
+    
+    st.divider()
+    st.caption("Lキン肉マン 7人の悪魔超人編、AT、純増6.1枚/G、天井液晶900G+α")
 
 def monkeyv():
     st.header("スマスロ　モンキーターンV")
@@ -568,9 +583,12 @@ def monkeyv():
         else:
             st.subheader("データカウンター 410G～を基準に優出ptsや示唆で押し引き")
 
-def village():
+    st.divider()
+    st.caption("LモンキーターンV、AT、下位純増2.5枚/G 上位純増4枚/G、天井795G+α or 6周期目、リセット時・青島バトル敗北後・上位AT終了後は495+α or 4周期目")
+
+def village(): 
     st.header("スマスロ バイオハザード:ヴィレッジ")
-    morning = st.radio("朝一リセット", value=False, help="設定変更後は天井550Gに短縮")
+    morning = st.checkbox("朝一リセット", value=False, help="設定変更後は天井550Gに短縮")
     if morning:
         st.subheader("天井狙い 70G～")
     else:
@@ -587,6 +605,69 @@ def village():
                 CLIMAX7敗北時は即ヤメ \n
                 Hazard Rush 終了後は5G程回し即前兆を確認してヤメ
                 """)
+    
+    st.divider()
+    st.caption("Lバイオハザード ヴィレッジ、AT、純増2.5枚/G、天井750G+α")
+
+def macrossf4():
+    st.header("スマスロ マクロスフロンティア4")
+    st.write("このページでは、内部G数が実G数の1.5倍になるものとして算出した狙い目を表示します。もし打ち込んでいる人で、1.5倍ではないと思う方は下の欄を修正して利用してください。")
+    factor = st.number_input("内部G数加算率（デフォルト1.5倍）", 1, 3, step=0.01, value=1.5, help="分からなければ触らなくてok")
+    morning = st.checkbox("朝一リセット", value=False, help="朝一0スルーは甘い、1・2スルーは辛い")
+    thru = st.slider("ボーナススルー回数", 0,6,0,1)
+    if not morning:
+        if thru == 0:
+            g = 540*factor
+        elif thru == 1:
+            g = 570*factor
+        elif thru == 2:
+            g = 570*factor
+        elif thru == 3:
+            g = 650*factor
+        elif thru == 4:
+            g = 650*factor
+        elif thru == 5:
+            g = 220*factor
+        else:
+            g = 0
+
+        st.subheader(f"液晶 {int(g)}G~ 天井まで")
+        st.subheader("液晶 480G～500Gのゾーン狙い 前兆終了まで")
+        st.caption("500Gのゾーンで前兆が来なければ良いモードなのでそのまま天井まで")
+
+    else:
+        if thru == 0:
+            g = 210*factor
+        elif thru == 1:
+            g = 600*factor
+        elif thru == 2:
+            g = 640*factor
+        elif thru == 3:
+            g = 660*factor
+        elif thru == 4:
+            g = 650*factor
+        elif thru == 5:
+            g = 220*factor
+        else:
+            g = 0
+
+        st.subheader(f"液晶 {int(g)}G~ 天井まで")
+
+    st.divider()
+
+    st.markdown("""## ヤメ時
+                15G程回す \n
+                歌即前兆があれば100Gまで回す。\n
+                なければヤメ。
+                """)
+    
+    st.divider()
+    st.caption("Lマクロスフロンティア4、AT、純増1.5枚/G or 5枚/G、天井液晶1500G+α or 実ゲーム1000G+α、歌姫ボーナス11回目")
+
+def geass():
+    st.subheader("スマスロ コードギアス 復活のルルーシュ")
+    morning = st.checkbox("朝一リセット", value=False)
+    
 
 
 if st.session_state['machine'] == '機種を選択':
@@ -607,6 +688,10 @@ elif st.session_state['machine'] == 'モンキーターンV':
     monkeyv()
 elif st.session_state['machine'] == "バイオヴィレッジ":
     village()
+elif st.session_state['machine'] == "マクロスF4":
+    macrossf4()
+elif st.session_state['machine'] == "Lコードギアス":
+    geass()
 else:
     st.header("工事中...")
 
